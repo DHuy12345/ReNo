@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ReNo Reader</title>
+  <link rel="stylesheet" href="pdf_viewer.css">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #EFECE6; }
+    #viewerContainer { position: absolute; inset: 0; overflow: auto; -webkit-overflow-scrolling: touch; }
+    .pdfViewer .page { margin: 8px auto; border: none; box-shadow: 0 1px 3px rgba(47, 52, 55, .25); }
+
+    /* Lớp đánh dấu của ReNo: nằm trên trang, không chặn thao tác bôi đen. */
+    .reno-layer { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+    .reno-rect { position: absolute; box-sizing: border-box; }
+    .reno-rect.hl { mix-blend-mode: multiply; opacity: .4; border-radius: 2px; }
+    .reno-rect.ul { border-bottom: 2px dashed #2E6F40; }
+    .reno-badge {
+      position: absolute; transform: translate(-60%, -70%);
+      min-width: 14px; height: 14px; line-height: 14px; padding: 0 2px;
+      border-radius: 7px; background: #2E6F40; color: #FFFFFF;
+      font: bold 10px/14px sans-serif; text-align: center;
+    }
+    .reno-flash { animation: reno-blink .45s ease-in-out 2; }
+    @keyframes reno-blink {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(46, 111, 64, 0); background-color: transparent; }
+      50% { box-shadow: 0 0 0 4px rgba(46, 111, 64, .55); background-color: rgba(46, 111, 64, .35); }
+    }
+
+    #zoom { position: fixed; right: 12px; bottom: 12px; display: flex; gap: 8px; z-index: 20; }
+    #zoom button {
+      width: 44px; height: 44px; border-radius: 22px; border: 1px solid #E3E0DA;
+      background: #FFFFFF; color: #2F3437; font-size: 22px; line-height: 1;
+      box-shadow: 0 1px 3px rgba(47, 52, 55, .25);
+    }
+    #status { position: fixed; left: 0; right: 0; top: 40%; text-align: center; color: #6B6F72;
+      font: 15px sans-serif; z-index: 10; }
+  </style>
+</head>
+<body>
+  <div id="viewerContainer"><div id="viewer" class="pdfViewer"></div></div>
+  <div id="zoom">
+    <button id="zoomOut" type="button" aria-label="Thu nhỏ">&minus;</button>
+    <button id="zoomIn" type="button" aria-label="Phóng to">+</button>
+  </div>
+  <div id="status"></div>
+  <script type="module" src="reader.js"></script>
+</body>
+</html>

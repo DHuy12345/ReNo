@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/fab_bottom_space">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_2"
+                android:layout_marginTop="@dimen/space_2"
+                android:text="@string/read_recent"
+                android:textAppearance="@style/TextAppearance.Reno.Section" />
+
+            <!-- 3 thẻ trên một hàng, rộng bằng nhau; ô trống vẫn giữ chỗ -->
+            <LinearLayout
+                android:id="@+id/row_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_1"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp">
+
+                <include
+                    android:id="@+id/recent1"
+                    layout="@layout/view_recent_topic" />
+
+                <include
+                    android:id="@+id/recent2"
+                    layout="@layout/view_recent_topic" />
+
+                <include
+                    android:id="@+id/recent3"
+                    layout="@layout/view_recent_topic" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_no_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/space_2"
+                android:layout_marginTop="@dimen/space_1"
+                android:text="@string/read_no_topic"
+                android:textAppearance="@style/TextAppearance.Reno.Body"
+                android:textColor="@color/text_secondary"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_2"
+                android:layout_marginTop="@dimen/space_3"
+                android:layout_marginBottom="@dimen/space_half"
+                android:text="@string/read_created"
+                android:textAppearance="@style/TextAppearance.Reno.Section" />
+
+            <TextView
+                android:id="@+id/text_no_folder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/space_2"
+                android:layout_marginTop="@dimen/space_1"
+                android:text="@string/read_no_folder"
+                android:textAppearance="@style/TextAppearance.Reno.Body"
+                android:textColor="@color/text_secondary"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/Widget.Reno.Fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/space_2"
+        android:contentDescription="@string/add"
+        android:src="@drawable/ic_add" />
+</FrameLayout>

@@ -19,8 +19,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // uCrop (Yalantis) chỉ phát hành qua JitPack
+        maven {
+            url 'https://jitpack.io'
+            content {
+                includeGroup 'com.github.yalantis'
+            }
+        }
     }
 }
 
-rootProject.name = "Project_CK"
+rootProject.name = "ReNo"
 include ':app'

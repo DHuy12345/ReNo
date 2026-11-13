@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/space_3"
+        android:paddingTop="@dimen/space_1">
+
+        <!-- Đoạn chữ đã chọn, tối đa 3 dòng -->
+        <TextView
+            android:id="@+id/text_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_alt"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="@dimen/space_1"
+            android:textAppearance="@style/TextAppearance.Reno.Body"
+            android:textStyle="italic" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Reno.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2"
+            android:hint="@string/annotation_title_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="200"
+                android:singleLine="true"
+                android:textSize="@dimen/text_body" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Reno.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_1"
+            android:hint="@string/annotation_detail_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLength="2000"
+                android:maxLines="6"
+                android:minLines="3"
+                android:textSize="@dimen/text_body" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/label_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_1"
+            android:text="@string/annotation_color"
+            android:textAppearance="@style/TextAppearance.Reno.Caption" />
+
+        <com.reno.app.ui.common.ColorPaletteView
+            android:id="@+id/palette"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

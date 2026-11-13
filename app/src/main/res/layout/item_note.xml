@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:minHeight="64dp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_1"
+        android:paddingEnd="@dimen/space_half">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/check"
+            android:layout_width="@dimen/touch_min"
+            android:layout_height="@dimen/touch_min"
+            app:buttonTint="@color/moss" />
+
+        <View
+            android:id="@+id/view_color"
+            android:layout_width="@dimen/note_color_bar"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/space_1">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.Reno.Body" />
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Reno.Caption" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_repeat"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/space_1"
+            android:contentDescription="@string/notes_repeat_icon"
+            android:src="@drawable/ic_repeat"
+            app:tint="@color/text_secondary" />
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            style="@style/Widget.Reno.IconButton"
+            android:contentDescription="@string/delete"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/space_2"
+        android:background="@color/line" />
+</LinearLayout>

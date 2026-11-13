@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/sheet_peek_height">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/space_half">
+
+            <ImageButton
+                android:id="@+id/btn_prev"
+                style="@style/Widget.Reno.IconButton"
+                android:contentDescription="@string/calendar_prev"
+                android:src="@drawable/ic_chevron_left" />
+
+            <TextView
+                android:id="@+id/text_month"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Reno.Section" />
+
+            <ImageButton
+                android:id="@+id/btn_next"
+                style="@style/Widget.Reno.IconButton"
+                android:contentDescription="@string/calendar_next"
+                android:src="@drawable/ic_chevron_right" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_today"
+                style="@style/Widget.Reno.Button.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today" />
+
+            <ImageButton
+                android:id="@+id/btn_collapse"
+                style="@style/Widget.Reno.IconButton"
+                android:contentDescription="@string/calendar_collapse"
+                android:src="@drawable/ic_expand" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_weekdays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <com.kizitonwose.calendar.view.CalendarView
+            android:id="@+id/month_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cv_dayViewResource="@layout/calendar_day"
+            app:cv_orientation="horizontal"
+            app:cv_scrollPaged="true" />
+
+        <com.kizitonwose.calendar.view.WeekCalendarView
+            android:id="@+id/week_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cv_dayViewResource="@layout/calendar_day"
+            app:cv_scrollPaged="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <com.reno.app.ui.calendar.TimetableView
+            android:id="@+id/timetable"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- My calendars: bảng kéo từ đáy màn, lúc thu chỉ hiện "My calendars ^" -->
+    <LinearLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_sheet"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="@dimen/sheet_peek_height"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:id="@+id/sheet_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sheet_peek_height"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/space_2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/calendar_my_calendars"
+                android:textAppearance="@style/TextAppearance.Reno.Section" />
+
+            <ImageView
+                android:id="@+id/img_sheet_arrow"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:importantForAccessibility="no"
+                android:rotation="180"
+                android:src="@drawable/ic_expand"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+
+            <LinearLayout
+                android:id="@+id/list_calendars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/space_2" />
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
