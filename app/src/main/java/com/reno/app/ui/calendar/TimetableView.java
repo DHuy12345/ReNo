@@ -149,7 +149,7 @@ public class TimetableView extends View {
             @Override
             public boolean onScroll(@Nullable MotionEvent e1, @NonNull MotionEvent e2,
                                     float dx, float dy) {
-                scrollTo(scrollXf + dx, scrollYf + dy);
+                setContentScroll(scrollXf + dx, scrollYf + dy);
                 return true;
             }
 
@@ -201,7 +201,12 @@ public class TimetableView extends View {
         return Math.max(0f, hourHeight * 24 - (getHeight() - headerHeight));
     }
 
-    private void scrollTo(float x, float y) {
+    /**
+     * Đổi vị trí cuộn của NỘI DUNG thời khóa biểu (không phải View.scrollTo). Đặt tên khác hẳn
+     * để không bị Java chọn nhầm View.scrollTo(int, int) khi truyền số nguyên — lỗi đó từng
+     * dịch cả khung vẽ của view đi và làm thời khóa biểu "biến mất" khi buông tay.
+     */
+    private void setContentScroll(float x, float y) {
         scrollXf = Math.max(0f, Math.min(maxScrollX(), x));
         scrollYf = Math.max(0f, Math.min(maxScrollY(), y));
         invalidate();
@@ -213,7 +218,7 @@ public class TimetableView extends View {
         int index = (int) (day.toEpochDay() - weekStart.toEpochDay());
         index = Math.max(0, Math.min(DAYS - 1, index));
         int first = Math.max(0, Math.min(DAYS - VISIBLE_DAYS, index - 1));
-        scrollTo(first * columnWidth(), scrollYf);
+        setContentScroll(first * columnWidth(), scrollYf);
     }
 
     @Override
@@ -226,10 +231,10 @@ public class TimetableView extends View {
             float y = (now.getHour() + now.getMinute() / 60f) * hourHeight
                     - (h - headerHeight) / 3f;
             scrollYf = 0;
-            scrollTo(0, y);
+            setContentScroll(0, y);
             scrollToDay(selected);
         } else {
-            scrollTo(scrollXf, scrollYf);
+            setContentScroll(scrollXf, scrollYf);
         }
         rebuildRects();
     }
@@ -295,7 +300,7 @@ public class TimetableView extends View {
     @Override
     public void computeScroll() {
         if (scroller.computeScrollOffset()) {
-            scrollTo(scroller.getCurrX(), scroller.getCurrY());
+            setContentScroll(scroller.getCurrX(), scroller.getCurrY());
             postInvalidateOnAnimation();
         }
     }
