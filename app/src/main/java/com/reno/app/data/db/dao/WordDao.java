@@ -22,9 +22,13 @@ public interface WordDao {
     @Query("SELECT * FROM words WHERE id = :id")
     WordEntity findById(long id);
 
-    /** Cột word khai báo COLLATE NOCASE nên phép "=" không phân biệt hoa thường. */
-    @Query("SELECT * FROM words WHERE folder_id = :folderId AND word = :word LIMIT 1")
-    WordEntity findInFolder(long folderId, String word);
+    /** Từ trùng trong cùng thư mục, không phân biệt hoa thường (kể cả chữ có dấu). */
+    default WordEntity findInFolder(long folderId, String word) {
+        for (WordEntity w : listByFolder(folderId)) {
+            if (com.reno.app.util.TextKeys.sameIgnoreCase(w.word, word)) return w;
+        }
+        return null;
+    }
 
     @Query("SELECT * FROM words WHERE folder_id = :folderId ORDER BY created_at, id")
     List<WordEntity> listByFolder(long folderId);

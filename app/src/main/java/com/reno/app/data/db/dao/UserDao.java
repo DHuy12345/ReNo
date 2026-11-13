@@ -22,9 +22,26 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE id = :id")
     LiveData<UserEntity> observeById(long id);
 
-    /** Cột username khai báo COLLATE NOCASE nên phép "=" không phân biệt hoa thường. */
     @Query("SELECT * FROM users WHERE username = :username LIMIT 1")
-    UserEntity findByUsername(String username);
+    UserEntity findByUsernameNocase(String username);
+
+    @Query("SELECT * FROM users")
+    List<UserEntity> listAll();
+
+    /**
+     * Tìm theo username, không phân biệt hoa thường. Cột khai báo COLLATE NOCASE (nhanh, đúng
+     * với chữ ASCII); với chữ có dấu thì so sánh thêm bằng Java.
+     */
+    default UserEntity findByUsername(String username) {
+        UserEntity u = findByUsernameNocase(username);
+        if (u != null) return u;
+        for (UserEntity candidate : listAll()) {
+            if (com.reno.app.util.TextKeys.sameIgnoreCase(candidate.username, username)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
 
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     UserEntity findByEmail(String email);

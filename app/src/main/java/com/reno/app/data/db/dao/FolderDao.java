@@ -21,8 +21,16 @@ public interface FolderDao {
     @Query("SELECT * FROM folders WHERE user_id = :userId AND type = :type ORDER BY name COLLATE NOCASE")
     List<FolderEntity> list(long userId, String type);
 
-    @Query("SELECT * FROM folders WHERE user_id = :userId AND type = :type AND name = :name LIMIT 1")
-    FolderEntity findByName(long userId, String type, String name);
+    @Query("SELECT * FROM folders WHERE user_id = :userId AND type = :type")
+    List<FolderEntity> listUnsorted(long userId, String type);
+
+    /** Tìm thư mục trùng tên, không phân biệt hoa thường (kể cả chữ có dấu). */
+    default FolderEntity findByName(long userId, String type, String name) {
+        for (FolderEntity f : listUnsorted(userId, type)) {
+            if (com.reno.app.util.TextKeys.sameIgnoreCase(f.name, name)) return f;
+        }
+        return null;
+    }
 
     @Query("SELECT * FROM folders WHERE id = :id")
     FolderEntity findById(long id);

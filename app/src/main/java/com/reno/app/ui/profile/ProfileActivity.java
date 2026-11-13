@@ -82,7 +82,7 @@ public class ProfileActivity extends BaseActivity {
 
         b.toolbar.textTitle.setText(R.string.profile_title);
         b.toolbar.btnBack.setOnClickListener(v -> confirmLeave());
-        b.btnBack.setOnClickListener(v -> confirmLeave());
+        b.btnReturn.setOnClickListener(v -> confirmLeave());
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {

@@ -61,12 +61,9 @@ public class CameraViewModel extends AndroidViewModel {
     private final MutableLiveData<TranslationUi> translation =
             new MutableLiveData<>(new TranslationUi(TranslateState.NONE, "", null));
 
-    private final TextRecognizer recognizer =
-            TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
-    private final Translator translator = Translation.getClient(new TranslatorOptions.Builder()
-            .setSourceLanguage(TranslateLanguage.ENGLISH)
-            .setTargetLanguage(TranslateLanguage.VIETNAMESE)
-            .build());
+    /** Tạo khi cần lần đầu, để mở mục Máy ảnh không phải nạp mô hình ngay. */
+    @Nullable private TextRecognizer recognizer;
+    @Nullable private Translator translator;
 
     /** File tạm đang chờ app máy ảnh ghi vào. */
     @Nullable public Uri cameraUri;
@@ -75,6 +72,23 @@ public class CameraViewModel extends AndroidViewModel {
 
     public CameraViewModel(@NonNull Application app) {
         super(app);
+    }
+
+    private TextRecognizer recognizer() {
+        if (recognizer == null) {
+            recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
+        }
+        return recognizer;
+    }
+
+    private Translator translator() {
+        if (translator == null) {
+            translator = Translation.getClient(new TranslatorOptions.Builder()
+                    .setSourceLanguage(TranslateLanguage.ENGLISH)
+                    .setTargetLanguage(TranslateLanguage.VIETNAMESE)
+                    .build());
+        }
+        return translator;
     }
 
     public LiveData<OcrState> ocrState() {
@@ -119,7 +133,7 @@ public class CameraViewModel extends AndroidViewModel {
         });
         try {
             InputImage input = InputImage.fromFilePath(getApplication(), uri);
-            recognizer.process(input)
+            recognizer().process(input)
                     .addOnSuccessListener(text -> {
                         if (current != generation) return;
                         String value = text.getText().trim();
@@ -188,7 +202,7 @@ public class CameraViewModel extends AndroidViewModel {
         if (ui == null || ui.source.isEmpty()) return;
         String source = ui.source;
         translation.setValue(new TranslationUi(TranslateState.DOWNLOADING, source, null));
-        translator.downloadModelIfNeeded(new DownloadConditions.Builder().build())
+        translator().downloadModelIfNeeded(new DownloadConditions.Builder().build())
                 .addOnSuccessListener(unused -> {
                     if (isCurrent(source)) runTranslate(source);
                 })
@@ -203,7 +217,7 @@ public class CameraViewModel extends AndroidViewModel {
 
     private void runTranslate(String source) {
         translation.setValue(new TranslationUi(TranslateState.TRANSLATING, source, null));
-        translator.translate(source)
+        translator().translate(source)
                 .addOnSuccessListener(result -> {
                     if (isCurrent(source)) {
                         translation.setValue(
@@ -227,7 +241,7 @@ public class CameraViewModel extends AndroidViewModel {
 
     @Override
     protected void onCleared() {
-        recognizer.close();
-        translator.close();
+        if (recognizer != null) recognizer.close();
+        if (translator != null) translator.close();
     }
 }

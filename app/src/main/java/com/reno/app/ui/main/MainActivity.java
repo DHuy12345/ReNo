@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.reno.app.R;
+import com.reno.app.data.repository.UserRepository;
 import com.reno.app.databinding.ActivityMainBinding;
 import com.reno.app.reminder.ReminderScheduler;
 import com.reno.app.ui.auth.LoginActivity;
@@ -58,8 +59,8 @@ public class MainActivity extends BaseActivity {
         MainViewModel vm = new ViewModelProvider(this).get(MainViewModel.class);
         vm.user().observe(this, user -> {
             if (user == null) {
-                // current_user_id không còn hợp lệ: về màn đăng nhập
-                if (!loggingOut) logout();
+                // current_user_id có thể không còn hợp lệ: kiểm tra lại CSDL rồi mới đăng xuất.
+                if (!loggingOut) logoutIfAccountMissing();
                 return;
             }
             b.textUsername.setText(user.username);
@@ -130,6 +131,15 @@ public class MainActivity extends BaseActivity {
             return true;
         });
         menu.show();
+    }
+
+    private void logoutIfAccountMissing() {
+        AppExecutors.diskIO().execute(() -> {
+            boolean missing = UserRepository.get(this).findSync(userId) == null;
+            runOnUiThread(() -> {
+                if (missing && !loggingOut && !isFinishing()) logout();
+            });
+        });
     }
 
     /** Hủy mọi báo thức đã đặt, xóa current_user_id, về màn đăng nhập và xóa ngăn xếp màn hình. */
