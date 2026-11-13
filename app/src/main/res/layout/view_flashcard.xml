@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Thẻ flashcard lớn: mặt trước là nghĩa tiếng Việt, chạm để lật ra từ tiếng Anh -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    style="@style/Widget.Reno.Card"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/flashcard_height"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/space_3">
+
+        <TextView
+            android:id="@+id/text_side"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Reno.Caption" />
+
+        <TextView
+            android:id="@+id/text_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_flashcard"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flashcard_tap_hint"
+            android:textAppearance="@style/TextAppearance.Reno.Caption" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

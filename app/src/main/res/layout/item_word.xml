@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/touch_min"
+    android:orientation="horizontal"
+    android:paddingStart="52dp"
+    android:paddingEnd="@dimen/space_half">
+
+    <TextView
+        android:id="@+id/text_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingVertical="@dimen/space_1"
+        android:textAppearance="@style/TextAppearance.Reno.Body" />
+
+    <ImageButton
+        android:id="@+id/btn_edit"
+        style="@style/Widget.Reno.IconButton"
+        android:contentDescription="@string/vocab_edit_icon"
+        android:src="@drawable/ic_edit" />
+
+    <ImageButton
+        android:id="@+id/btn_delete"
+        style="@style/Widget.Reno.IconButton"
+        android:contentDescription="@string/delete"
+        android:src="@drawable/ic_delete" />
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Một ô ngày của lịch tháng: số ngày, chấm xám (có ghi chú), chấm xanh rêu (có từ cần ôn) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/calendar_day_height"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_day"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Reno.Body" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/calendar_dot"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/dot_note"
+            android:layout_width="@dimen/calendar_dot"
+            android:layout_height="@dimen/calendar_dot"
+            android:layout_marginHorizontal="1dp"
+            android:background="@drawable/dot_note" />
+
+        <View
+            android:id="@+id/dot_vocab"
+            android:layout_width="@dimen/calendar_dot"
+            android:layout_height="@dimen/calendar_dot"
+            android:layout_marginHorizontal="1dp"
+            android:background="@drawable/dot_vocab" />
+    </LinearLayout>
+</LinearLayout>

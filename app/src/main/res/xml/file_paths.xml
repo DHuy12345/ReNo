@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-files-path name="external_files" path="." />
-    <files-path name="files" path="." />
-    <cache-path name="cache" path="." />
+<!-- Chỉ chia sẻ file ảnh tạm cho app máy ảnh hệ thống (OCR, avatar) -->
+<paths>
+    <cache-path
+        name="camera"
+        path="camera/" />
 </paths>

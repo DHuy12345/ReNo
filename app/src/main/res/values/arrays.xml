@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Hướng dẫn sử dụng: mỗi chức năng một đoạn ngắn -->
+    <string-array name="guide_titles">
+        <item>Tài khoản</item>
+        <item>Read – đọc và đánh dấu PDF</item>
+        <item>Notes – ghi chú theo ngày</item>
+        <item>Idea – ý tưởng</item>
+        <item>Vocabulary – từ vựng và flashcard</item>
+        <item>Ôn tập ngắt quãng</item>
+        <item>Thống kê</item>
+        <item>Máy ảnh – nhận chữ và dịch</item>
+        <item>Lịch</item>
+        <item>Thông báo</item>
+    </string-array>
+    <string-array name="guide_bodies">
+        <item>Bấm nút \"…\" ở góc phải thanh trên cùng để mở Thông tin người dùng, Hướng dẫn sử dụng hoặc Đăng xuất. Ở Thông tin người dùng, bạn đổi được ảnh đại diện, username, email, số điện thoại và giờ nhắc ôn tập mặc định. Ứng dụng chưa có chức năng quên mật khẩu, hãy ghi nhớ mật khẩu của bạn.</item>
+        <item>Bấm \"+\" để tạo thư mục hoặc thêm topic từ một file PDF trong máy. Mở topic để đọc; bôi đen một đoạn chữ rồi chọn ?, !, ★, Highlight hoặc Notes để đánh dấu. Tab Thống kê của topic đếm đánh dấu theo loại và đưa bạn tới đúng chỗ đã đánh dấu. Nhấn giữ thư mục hoặc topic để sửa tên, chuyển thư mục hoặc xóa.</item>
+        <item>Tab Notes hiện các ghi chú của hôm nay; bấm vào ngày để xem ngày khác. Khi thêm ghi chú, bạn chọn ngày giờ bắt đầu, thời lượng, màu và kiểu lặp: không lặp, mỗi ngày, cách n ngày hoặc các ngày tự chọn, có thể thêm ngày bỏ qua. Tích ô vuông để đánh dấu đã làm cho riêng ngày đó. Xóa ghi chú sẽ xóa mọi lần lặp.</item>
+        <item>Ghi nhanh ý tưởng bằng nút \"+\". Tích ô vuông để chuyển ý tưởng sang Đã thực hiện, bỏ tích để đưa về Chưa thực hiện. Nút sắp xếp cho phép xem mới nhất trước hoặc cũ nhất trước.</item>
+        <item>Từ vựng nằm trong các thư mục. Bấm \"+\" để thêm từ hoặc tạo thư mục. Bấm vào một từ để học bằng flashcard: mặt trước là nghĩa tiếng Việt, chạm thẻ để lật ra từ tiếng Anh. Bấm biểu tượng bút chì để sửa từ.</item>
+        <item>Mỗi từ được ôn 5 lần: sau 1 ngày, 3 ngày, 7 ngày, 1 tháng và 3 tháng kể từ ngày thêm. Đến giờ nhắc, ReNo gửi một thông báo cho các từ cùng giờ. Bấm thông báo để ôn từng từ với hai nút Xong và Bỏ qua. Bỏ qua có ba lựa chọn: dời sang lần ôn tiếp theo, nhắc vào thời điểm cụ thể, hoặc lùi n ngày.</item>
+        <item>Thống kê gồm ba mục: Đã bỏ lỡ (30 ngày gần nhất), Sắp tới (7 ngày tới) và Đã hoàn thành. Bấm tên mục để mở hoặc đóng danh sách; bấm một dòng để mở chi tiết ghi chú hoặc màn ôn tập.</item>
+        <item>Chụp ảnh hoặc chọn ảnh có chữ tiếng Anh, ReNo sẽ nhận chữ trong ảnh. Bôi đen một từ rồi chọn Dịch để xem nghĩa tiếng Việt; bấm \"+\" để thêm ngay vào từ vựng. Lần dịch đầu tiên cần mạng để tải gói dịch.</item>
+        <item>Lịch tháng đánh dấu ngày có ghi chú (chấm xám) và ngày có từ cần ôn (chấm xanh rêu). Thời khóa biểu bên dưới cuộn được ngang và dọc; bấm khối ghi chú hoặc vạch \"Ôn N từ\" để mở chi tiết. Kéo bảng My calendars từ đáy màn để ẩn hoặc hiện từng ghi chú.</item>
+        <item>Màn Thông báo lưu các nhắc nhở đã gửi. Bấm một thông báo để mở chi tiết ghi chú hoặc màn ôn tập; biểu tượng thùng rác chỉ xóa thông báo, không xóa ghi chú hay từ vựng. Nếu bạn tắt quyền thông báo, nhắc nhở vẫn được ghi lại ở đây.</item>
+    </string-array>
+</resources>

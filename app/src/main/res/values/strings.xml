@@ -1,3 +1,348 @@
 <resources>
-    <string name="app_name">Project_CK</string>
+    <string name="app_name">ReNo</string>
+    <string name="time_just_now">Vừa xong</string>
+    <string name="time_minutes_ago">%1$d phút trước</string>
+    <string name="time_hours_ago">%1$d giờ trước</string>
+    <string name="time_days_ago">%1$d ngày trước</string>
+
+    <!-- Chung -->
+    <string name="cancel">Hủy</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="edit">Sửa</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="back">Trở lại</string>
+    <string name="done">Xong</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="retry">Thử lại</string>
+    <string name="close">Đóng</string>
+    <string name="add">Thêm</string>
+    <string name="rename">Sửa tên</string>
+    <string name="today">Hôm nay</string>
+    <string name="error_generic">Đã có lỗi xảy ra, hãy thử lại</string>
+    <string name="loading">Đang xử lý…</string>
+
+    <!-- Tài khoản -->
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="hint_password_confirm">Nhập lại mật khẩu</string>
+    <string name="hint_contact">Phone/email</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="login_no_account">Chưa có tài khoản?</string>
+    <string name="register_have_account">Đã có tài khoản? Đăng nhập</string>
+    <string name="logo_description">Logo ReNo</string>
+    <string name="error_login_failed">Sai username hoặc mật khẩu</string>
+    <string name="error_contact_invalid">Email hoặc số điện thoại không hợp lệ</string>
+    <string name="error_contact_taken">Email/số điện thoại này đã được dùng cho tài khoản khác</string>
+    <string name="error_email_invalid">Email không hợp lệ</string>
+    <string name="error_phone_invalid">Số điện thoại không hợp lệ</string>
+    <string name="error_contact_both_empty">Phải có ít nhất email hoặc số điện thoại</string>
+    <string name="error_username_length">Username phải từ 3 đến 30 ký tự</string>
+    <string name="error_username_at">Username không được chứa ký tự @</string>
+    <string name="error_username_taken">Username này đã có người dùng</string>
+    <string name="error_password_short">Mật khẩu phải có ít nhất 6 ký tự</string>
+    <string name="error_password_long">Mật khẩu không được quá 64 ký tự</string>
+    <string name="error_password_mismatch">Mật khẩu nhập lại không khớp</string>
+    <string name="register_success">Đăng ký thành công</string>
+    <string name="logout_confirm">Bạn có chắc muốn đăng xuất khỏi ReNo?</string>
+
+    <!-- Điều hướng chính -->
+    <string name="nav_home">Nhà</string>
+    <string name="nav_stats">Thống kê</string>
+    <string name="nav_camera">Máy ảnh</string>
+    <string name="nav_calendar">Lịch</string>
+    <string name="nav_notifications">Thông báo</string>
+    <string name="menu_more">Thêm lựa chọn</string>
+    <string name="menu_profile">Thông tin người dùng</string>
+    <string name="menu_guide">Hướng dẫn sử dụng</string>
+    <string name="avatar_description">Ảnh đại diện</string>
+    <string name="tab_read">Read</string>
+    <string name="tab_notes">Notes</string>
+    <string name="tab_idea">Idea</string>
+    <string name="tab_vocabulary">Vocabulary</string>
+    <string name="permission_exact_alarm_title">Nhắc đúng giờ</string>
+    <string name="permission_exact_alarm_message">Để ReNo nhắc đúng phút, hãy cho phép \"Báo thức và lời nhắc\" trong cài đặt. Nếu không, thông báo có thể đến trễ vài phút.</string>
+    <string name="permission_open_settings">Mở cài đặt</string>
+    <string name="permission_later">Để sau</string>
+
+    <!-- Thông tin người dùng -->
+    <string name="profile_title">Thông tin người dùng</string>
+    <string name="profile_created_at">Ngày tạo</string>
+    <string name="profile_review_time">Giờ nhắc ôn tập</string>
+    <string name="profile_review_time_hint">Giờ nhắc mặc định cho các từ chọn \"Giờ mặc định\"</string>
+    <string name="profile_saved">Đã lưu thông tin</string>
+    <string name="profile_discard_title">Bỏ các thay đổi?</string>
+    <string name="profile_discard_message">Các thay đổi chưa lưu sẽ bị mất.</string>
+    <string name="profile_discard">Bỏ</string>
+    <string name="profile_keep_editing">Sửa tiếp</string>
+    <string name="avatar_change">Đổi ảnh đại diện</string>
+    <string name="avatar_take_photo">Chụp ảnh</string>
+    <string name="avatar_pick_gallery">Chọn từ thư viện</string>
+    <string name="avatar_use_default">Dùng ảnh mặc định</string>
+    <string name="avatar_crop_title">Căn chỉnh ảnh</string>
+    <string name="avatar_error">Không xử lý được ảnh này</string>
+    <string name="camera_unavailable">Không mở được ứng dụng máy ảnh</string>
+
+    <!-- Hướng dẫn sử dụng -->
+    <string name="guide_title">Hướng dẫn sử dụng</string>
+
+    <!-- Thư mục (dùng chung Read và Vocabulary) -->
+    <string name="folder_create">Tạo thư mục</string>
+    <string name="folder_name_hint">Tên thư mục</string>
+    <string name="folder_rename">Sửa tên thư mục</string>
+    <string name="folder_delete_title">Xóa thư mục \"%1$s\"?</string>
+    <string name="folder_empty">Thư mục trống</string>
+    <string name="folder_expand">Mở hoặc đóng thư mục</string>
+    <string name="error_folder_name_empty">Tên thư mục không được để trống</string>
+    <string name="error_folder_name_taken">Đã có thư mục trùng tên</string>
+    <string name="error_folder_required">Hãy chọn thư mục</string>
+
+    <!-- Read -->
+    <string name="read_recent">Gần đây</string>
+    <string name="read_created">Danh sách đã tạo</string>
+    <string name="read_no_topic">Chưa có topic nào</string>
+    <string name="read_no_folder">Chưa có thư mục nào. Bấm + để thêm.</string>
+    <string name="read_topic_count">%1$d topic</string>
+    <string name="read_add_topic">Thêm topic</string>
+    <string name="read_need_folder">Hãy tạo thư mục trước khi thêm topic</string>
+    <string name="read_choose_folder">Chọn thư mục</string>
+    <string name="read_pdf_error">Không mở được file PDF này</string>
+    <string name="read_topic_name">Tên topic</string>
+    <string name="read_topic_name_hint">Tên topic</string>
+    <string name="read_topic_rename">Sửa tên topic</string>
+    <string name="read_topic_move">Chuyển thư mục</string>
+    <string name="read_topic_delete_title">Xóa topic \"%1$s\"?</string>
+    <string name="read_topic_delete_message">File PDF và toàn bộ đánh dấu của topic này sẽ bị xóa.</string>
+    <string name="read_folder_delete_message">Sẽ xóa %1$d topic và toàn bộ đánh dấu bên trong.</string>
+    <string name="error_topic_name_empty">Tên topic không được để trống</string>
+    <string name="picker_unavailable">Không mở được bộ chọn file</string>
+
+    <!-- Topic -->
+    <string name="topic_tab_notes">Ghi chú</string>
+    <string name="topic_tab_stats">Thống kê</string>
+    <string name="topic_tab_summary">Tóm tắt</string>
+    <string name="topic_summary_placeholder">Tính năng tóm tắt đang được phát triển</string>
+    <string name="topic_scan_banner">File này là ảnh scan, không thể đánh dấu chữ</string>
+    <string name="topic_load_error">Không mở được file PDF này</string>
+    <string name="topic_missing">Topic không còn tồn tại</string>
+    <string name="mark_question">\?</string>
+    <string name="mark_important">!</string>
+    <string name="mark_star">★</string>
+    <string name="mark_highlight">Highlight</string>
+    <string name="mark_note">Notes</string>
+    <string name="annotation_title_hint">Tên</string>
+    <string name="annotation_detail_hint">Chi tiết</string>
+    <string name="annotation_color">Màu tô</string>
+    <string name="annotation_no_title">(Không có tên)</string>
+    <string name="annotation_page">Trang %1$d</string>
+    <string name="annotation_jump">Nhấn để di chuyển đến nơi được đánh dấu</string>
+    <string name="annotation_delete_title">Xóa đánh dấu này?</string>
+    <string name="annotation_delete_message">Đánh dấu sẽ bị gỡ khỏi trang; file PDF không thay đổi.</string>
+    <string name="annotation_empty">Chưa có đánh dấu loại này. Bôi đen chữ ở tab Ghi chú để thêm.</string>
+    <string name="annotation_edit">Sửa đánh dấu</string>
+    <string name="annotation_no_selection">Hãy bôi đen một đoạn chữ trước</string>
+    <string name="my_annotations">My Annotations</string>
+
+    <!-- Notes -->
+    <string name="notes_today_title">Ghi chú hôm nay</string>
+    <string name="notes_date_title">Ghi chú ngày %1$s</string>
+    <string name="notes_pick_date">Chọn ngày xem</string>
+    <string name="notes_empty">Chưa có ghi chú nào cho ngày này. Bấm + để thêm.</string>
+    <string name="notes_time_range">%1$s – %2$s</string>
+    <string name="notes_skipped_suffix">%1$s · Đã bỏ qua</string>
+    <string name="notes_repeat_icon">Ghi chú lặp lại</string>
+    <string name="notes_delete_title">Xóa ghi chú \"%1$s\"?</string>
+    <string name="notes_delete_message">Ghi chú này sẽ bị xóa và không còn nhắc.</string>
+    <string name="notes_delete_message_repeat">Mọi lần lặp của ghi chú này sẽ bị xóa và không còn nhắc.</string>
+    <string name="notes_future_locked">Chỉ tích được ngày hôm nay hoặc ngày đã qua</string>
+    <string name="note_add_title">Thêm ghi chú</string>
+    <string name="note_edit_title">Sửa ghi chú</string>
+    <string name="note_name_hint">Tên ghi chú</string>
+    <string name="note_start_date">Ngày bắt đầu</string>
+    <string name="note_start_time">Giờ bắt đầu</string>
+    <string name="note_duration_hint">Thời lượng (phút)</string>
+    <string name="note_color">Màu</string>
+    <string name="note_repeat">Lặp lại</string>
+    <string name="note_repeat_none">Không lặp lại</string>
+    <string name="note_repeat_daily">Mỗi ngày</string>
+    <string name="note_repeat_interval">Cách n ngày</string>
+    <string name="note_repeat_custom">Các ngày tự chọn</string>
+    <string name="note_repeat_interval_value">Cách %1$d ngày</string>
+    <string name="note_interval_hint">n (2–65 ngày)</string>
+    <string name="note_repeat_until">Lặp đến ngày</string>
+    <string name="note_repeat_unlimited">Không giới hạn</string>
+    <string name="note_repeat_until_clear">Bỏ ngày kết thúc</string>
+    <string name="note_repeat_until_value">đến %1$s</string>
+    <string name="note_exdates">Ngày bỏ qua</string>
+    <string name="note_rdates">Các ngày tự chọn</string>
+    <string name="note_add_date">+ Thêm ngày</string>
+    <string name="note_preview">Các lần tới: %1$s</string>
+    <string name="note_preview_none">Không còn lần xuất hiện nào</string>
+    <string name="error_note_name_empty">Hãy nhập tên ghi chú</string>
+    <string name="error_note_start_past">Ngày giờ bắt đầu không được trước thời điểm hiện tại</string>
+    <string name="error_note_duration">Thời lượng phải từ 5 đến 720 phút</string>
+    <string name="error_note_interval">n phải từ 2 đến 65</string>
+    <string name="error_note_until">Ngày kết thúc lặp phải từ ngày bắt đầu trở đi</string>
+    <string name="note_detail_title">Chi tiết ghi chú</string>
+    <string name="note_detail_date">Ngày</string>
+    <string name="note_detail_time">Thời gian</string>
+    <string name="note_detail_repeat">Lặp lại</string>
+    <string name="note_detail_status">Trạng thái</string>
+    <string name="note_detail_edit">Sửa ghi chú</string>
+    <string name="status_pending">Chưa xử lý</string>
+    <string name="status_done">Xong</string>
+    <string name="status_skipped">Bỏ qua</string>
+    <string name="note_missing">Ghi chú không còn tồn tại</string>
+
+    <!-- Idea -->
+    <string name="idea_tab_todo">Chưa thực hiện</string>
+    <string name="idea_tab_done">Đã thực hiện</string>
+    <string name="idea_sort">Sắp xếp</string>
+    <string name="idea_sort_newest">Mới nhất trước</string>
+    <string name="idea_sort_oldest">Cũ nhất trước</string>
+    <string name="idea_empty_todo">Chưa có ý tưởng nào. Bấm + để thêm.</string>
+    <string name="idea_empty_done">Chưa có ý tưởng nào đã thực hiện.</string>
+    <string name="idea_add_title">Thêm ý tưởng</string>
+    <string name="idea_edit_title">Sửa ý tưởng</string>
+    <string name="idea_hint">Ý tưởng của bạn</string>
+    <string name="idea_moved_done">Đã chuyển sang Đã thực hiện</string>
+    <string name="idea_moved_todo">Đã chuyển sang Chưa thực hiện</string>
+    <string name="idea_delete_title">Xóa ý tưởng này?</string>
+    <string name="error_idea_empty">Hãy nhập ý tưởng</string>
+
+    <!-- Vocabulary -->
+    <string name="vocab_due_today">Hôm nay cần ôn %1$d từ</string>
+    <string name="vocab_due_today_hint">Bấm để ôn bằng flashcard</string>
+    <string name="vocab_due_none">Hôm nay không có từ nào cần ôn</string>
+    <string name="vocab_word_count">%1$d từ</string>
+    <string name="vocab_no_folder">Chưa có thư mục từ vựng nào. Bấm + để thêm.</string>
+    <string name="vocab_add_word">Thêm từ vựng</string>
+    <string name="vocab_edit_word">Sửa từ vựng</string>
+    <string name="vocab_word_hint">Từ vựng (tiếng Anh)</string>
+    <string name="vocab_meaning_hint">Nghĩa (tiếng Việt)</string>
+    <string name="vocab_folder_label">Thư mục</string>
+    <string name="vocab_folder_choose">Chọn thư mục</string>
+    <string name="vocab_folder_new">+ Thư mục mới</string>
+    <string name="vocab_remind_label">Giờ nhắc ôn</string>
+    <string name="vocab_remind_default">Giờ mặc định (%1$s)</string>
+    <string name="vocab_remind_custom">Tự chọn</string>
+    <string name="vocab_schedule_preview">5 lần ôn: %1$s</string>
+    <string name="vocab_added">Đã thêm. Lần ôn đầu tiên: %1$s</string>
+    <string name="vocab_saved">Đã lưu từ vựng</string>
+    <string name="vocab_delete_word_title">Xóa từ \"%1$s\"?</string>
+    <string name="vocab_delete_word_message">Từ này và lịch ôn của nó sẽ bị xóa.</string>
+    <string name="vocab_folder_delete_message">Sẽ xóa %1$d từ và toàn bộ lịch ôn của chúng.</string>
+    <string name="vocab_edit_icon">Sửa từ</string>
+    <string name="error_word_empty">Hãy nhập từ vựng</string>
+    <string name="error_word_long">Từ vựng tối đa 100 ký tự</string>
+    <string name="error_meaning_empty">Hãy nhập nghĩa</string>
+    <string name="error_meaning_long">Nghĩa tối đa 300 ký tự</string>
+    <string name="error_word_duplicate">Từ này đã có trong thư mục</string>
+    <string name="word_missing">Từ vựng không còn tồn tại</string>
+
+    <!-- Flashcard và ôn tập -->
+    <string name="flashcard_title">Flashcard</string>
+    <string name="flashcard_counter">%1$d / %2$d</string>
+    <string name="flashcard_side_meaning">Nghĩa tiếng Việt</string>
+    <string name="flashcard_side_word">Từ tiếng Anh</string>
+    <string name="flashcard_tap_hint">Chạm vào thẻ để lật</string>
+    <string name="flashcard_prev">Từ trước</string>
+    <string name="flashcard_next">Từ sau</string>
+    <string name="flashcard_empty">Không có từ nào để hiển thị</string>
+    <string name="review_title">Ôn tập</string>
+    <string name="review_progress">Đã xử lý %1$d / %2$d</string>
+    <string name="review_summary_title">Hoàn thành!</string>
+    <string name="review_summary">Đã ôn xong %1$d từ, bỏ qua %2$d từ.</string>
+    <string name="review_nothing">Không còn từ nào cần ôn trong nhóm này.</string>
+
+    <!-- Hộp thoại Bỏ qua -->
+    <string name="skip_title_group">Bỏ qua %1$d từ</string>
+    <string name="skip_title_single">Bỏ qua từ \"%1$s\"</string>
+    <string name="skip_option_next">Dời sang lần ôn tiếp theo</string>
+    <string name="skip_option_next_hint">Tính là đã bỏ lỡ, không đặt lại lịch</string>
+    <string name="skip_option_remind">Nhắc vào thời điểm cụ thể</string>
+    <string name="skip_option_postpone">Lùi n ngày</string>
+    <string name="skip_days_hint">Số ngày lùi (n ≥ 1)</string>
+    <string name="skip_confirm">Xác nhận</string>
+    <string name="skip_limit_info">Ngày mới phải trước ngày %1$s (lần ôn tiếp theo).</string>
+    <string name="skip_error_limit">Phải chọn trước ngày %1$s (lần ôn tiếp theo)</string>
+    <string name="skip_error_past_time">Thời điểm nhắc phải sau hiện tại</string>
+    <string name="skip_error_past_date">Ngày mới không được ở quá khứ, hãy lùi nhiều ngày hơn</string>
+    <string name="skip_error_days">Số ngày lùi phải từ 1 trở lên</string>
+    <string name="skip_nothing">Không còn từ nào cần ôn trong nhóm này</string>
+    <string name="skip_done">Đã cập nhật lịch ôn</string>
+
+    <!-- Thống kê -->
+    <string name="stats_missed">Đã bỏ lỡ</string>
+    <string name="stats_upcoming">Sắp tới</string>
+    <string name="stats_done">Đã hoàn thành</string>
+    <string name="stats_empty_missed">Không bỏ lỡ gì trong 30 ngày gần nhất.</string>
+    <string name="stats_empty_upcoming">Không có việc nào trong 7 ngày tới.</string>
+    <string name="stats_empty_done">Chưa hoàn thành việc nào trong 30 ngày gần nhất.</string>
+    <string name="stats_vocab_row">Ôn %1$d từ – %2$s</string>
+    <string name="stats_vocab_subtitle">Ôn tập từ vựng</string>
+    <string name="stats_note_subtitle">%1$s · %2$s</string>
+
+    <!-- Máy ảnh -->
+    <string name="camera_intro">Chụp hoặc chọn một ảnh có chữ tiếng Anh để nhận chữ và tra nghĩa.</string>
+    <string name="camera_take">Chụp ảnh</string>
+    <string name="camera_pick">Chọn ảnh từ thiết bị</string>
+    <string name="camera_other">Ảnh khác</string>
+    <string name="camera_recognizing">Đang nhận chữ…</string>
+    <string name="camera_no_text">Không tìm thấy chữ trong ảnh</string>
+    <string name="camera_ocr_failed">Không nhận được chữ từ ảnh này</string>
+    <string name="camera_result_hint">Bôi đen một từ rồi chọn Dịch để xem nghĩa.</string>
+    <string name="camera_thumbnail">Ảnh đã chọn, bấm để phóng to</string>
+    <string name="camera_translate">Dịch</string>
+    <string name="camera_translate_too_long">Hãy chọn đoạn ngắn hơn</string>
+    <string name="camera_translation_pair">%1$s → %2$s</string>
+    <string name="camera_translating">Đang dịch…</string>
+    <string name="camera_add_word">Thêm vào từ vựng</string>
+    <string name="camera_model_title">Tải gói dịch</string>
+    <string name="camera_model_message">Cần tải gói dịch Anh – Việt, cần kết nối mạng.</string>
+    <string name="camera_model_download">Tải</string>
+    <string name="camera_model_downloading">Đang tải gói dịch Anh – Việt…</string>
+    <string name="camera_translate_failed">Không dịch được. Hãy kiểm tra kết nối mạng rồi thử lại.</string>
+    <string name="camera_translate_source">Bản dịch do Google Dịch cung cấp (ML Kit)</string>
+
+    <!-- Lịch -->
+    <string name="calendar_month_title">Tháng %1$d, %2$d</string>
+    <string name="calendar_collapse">Thu gọn hoặc mở rộng lịch tháng</string>
+    <string name="calendar_prev">Trước</string>
+    <string name="calendar_next">Sau</string>
+    <string name="calendar_my_calendars">My calendars</string>
+    <string name="calendar_vocab">Ôn tập từ vựng</string>
+    <string name="calendar_vocab_line">Ôn %1$d từ</string>
+    <string name="calendar_no_notes">Chưa có ghi chú nào.</string>
+    <string name="weekday_mon">T2</string>
+    <string name="weekday_tue">T3</string>
+    <string name="weekday_wed">T4</string>
+    <string name="weekday_thu">T5</string>
+    <string name="weekday_fri">T6</string>
+    <string name="weekday_sat">T7</string>
+    <string name="weekday_sun">CN</string>
+
+    <!-- Thông báo -->
+    <string name="notif_empty">Chưa có thông báo nào.</string>
+    <string name="notif_disabled_banner">Bạn đang tắt thông báo</string>
+    <string name="notif_open_settings">Mở cài đặt</string>
+    <string name="notif_skip_group">Bỏ qua cả %1$d từ</string>
+    <string name="notif_delete_title">Xóa thông báo này?</string>
+    <string name="notif_delete_message">Chỉ xóa thông báo; ghi chú và từ vựng không bị ảnh hưởng.</string>
+    <string name="notif_note_title">Ghi chú: %1$s – %2$s</string>
+    <string name="notif_note_body">%1$s · %2$s – %3$s</string>
+    <string name="notif_vocab_title">Có %1$d từ cần ôn tập</string>
+    <string name="notif_vocab_body">%1$s. Bấm để ôn bằng flashcard.</string>
+    <string name="notif_time_status">%1$s · %2$s</string>
+    <string name="notif_unread">Chưa đọc</string>
+    <string name="channel_reminder_name">Nhắc nhở ReNo</string>
+    <string name="channel_reminder_description">Nhắc ghi chú đến giờ và nhắc ôn tập từ vựng</string>
+    <string name="topic_reader_crashed">Trình đọc PDF đã dừng do thiếu bộ nhớ, hãy mở lại topic</string>
+    <string name="annotation_type_page">%1$s · Trang %2$d</string>
 </resources>
