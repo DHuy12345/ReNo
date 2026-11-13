@@ -144,7 +144,10 @@ public class WordFormActivity extends BaseActivity {
     private void bindState() {
         b.radioDefault.setText(getString(R.string.vocab_remind_default, vm.defaultTime));
         int radio = vm.customTime ? R.id.radio_custom : R.id.radio_default;
-        if (b.groupRemind.getCheckedRadioButtonId() != radio) b.groupRemind.check(radio);
+        if (b.groupRemind.getCheckedRadioButtonId() != radio) {
+            b.groupRemind.check(radio);
+            b.groupRemind.jumpDrawablesToCurrentState();
+        }
         b.btnTime.setVisibility(vm.customTime ? View.VISIBLE : View.GONE);
         if (vm.time != null) b.btnTime.setText(DateUtils.formatTime(vm.time));
 

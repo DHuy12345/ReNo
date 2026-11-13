@@ -13,7 +13,6 @@
     <dimen name="space_2">16dp</dimen>
     <dimen name="space_3">24dp</dimen>
     <dimen name="space_4">32dp</dimen>
-    <dimen name="space_6">48dp</dimen>
 
     <!-- Bo góc -->
     <dimen name="radius_card">12dp</dimen>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Tiếng Việt không có số nhiều: "1 từ", "5 từ" dùng chung một chuỗi -->
+    <issue id="PluralsCandidate" severity="ignore" />
+    <!-- Đặc tả 2.3 quy định vị trí res/drawable/avatar_default.jpg và logo_reno.jpg -->
+    <issue id="IconLocation" severity="ignore" />
+    <!-- 5 nút đánh dấu khi bôi đen PDF và nút Dịch phải luôn hiện trên menu -->
+    <issue id="AlwaysShowAction" severity="ignore" />
+    <!-- Danh sách nhỏ (vài chục dòng) được vẽ lại toàn bộ khi dữ liệu đổi -->
+    <issue id="NotifyDataSetChanged" severity="ignore" />
+    <!-- Nền màn hình #FAF9F6 và thẻ trắng là chủ ý thiết kế (đặc tả 2.2) -->
+    <issue id="Overdraw" severity="ignore" />
+    <!-- AAPT2 chỉ nhận <adaptive-icon> trong mipmap-anydpi-v26, kể cả khi minSdk là 26 -->
+    <issue id="ObsoleteSdkInt" severity="ignore" />
+    <!-- Phiên bản thư viện được chốt khi bắt đầu code; nâng cấp theo kế hoạch riêng -->
+    <issue id="AndroidGradlePluginVersion" severity="ignore" />
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="NewerVersionAvailable" severity="ignore" />
+</lint>

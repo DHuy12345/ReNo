@@ -9,6 +9,7 @@ import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -70,6 +71,8 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
             new ViewCountCellBinding[AnnotationEntity.TYPES.length];
     private TopicEntity topic;
     private boolean readerReady;
+    /** WebView đã bị hủy do mất tiến trình hiển thị: không gọi JavaScript nữa. */
+    private boolean webGone;
     private boolean documentLoaded;
 
     public static Intent intent(Context ctx, long topicId) {
@@ -110,7 +113,7 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
 
     @Override
     protected void onDestroy() {
-        if (b != null) {
+        if (b != null && !webGone) {
             b.web.removeJavascriptInterface("Android");
             b.web.destroy();
         }
@@ -189,6 +192,24 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
                 return response;
             }
 
+            /**
+             * Hệ thống đóng tiến trình hiển thị của WebView (thường do thiếu bộ nhớ với PDF lớn):
+             * không để app crash, đóng màn topic và báo người dùng mở lại.
+             */
+            @Override
+            public boolean onRenderProcessGone(@NonNull WebView view,
+                                               @NonNull RenderProcessGoneDetail detail) {
+                Log.e(TAG, "WebView render process gone, crashed=" + detail.didCrash());
+                ViewGroup parent = (ViewGroup) view.getParent();
+                if (parent != null) parent.removeView(view);
+                view.destroy();
+                android.widget.Toast.makeText(TopicActivity.this, R.string.topic_reader_crashed,
+                        android.widget.Toast.LENGTH_LONG).show();
+                webGone = true;
+                finish();
+                return true;
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(@NonNull WebView view,
                                                     @NonNull WebResourceRequest request) {
@@ -201,7 +222,7 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
     }
 
     private void loadDocumentIfReady() {
-        if (!readerReady || topic == null || documentLoaded) return;
+        if (webGone || !readerReady || topic == null || documentLoaded) return;
         documentLoaded = true;
         String url = "/pdfs/" + new File(topic.filePath).getName();
         b.web.evaluateJavascript("reno.load(" + JSONObject.quote(url) + ", "
@@ -210,7 +231,7 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
 
     /** Đưa toàn bộ đánh dấu sang JavaScript để vẽ lên trang. */
     private void pushAnnotations() {
-        if (!readerReady) return;
+        if (webGone || !readerReady) return;
         JSONArray array = new JSONArray();
         for (AnnotationEntity a : vm.currentAnnotations()) {
             try {
@@ -350,8 +371,8 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
     private void showAnnotationSheet(AnnotationEntity a) {
         BottomSheetDialog sheet = new BottomSheetDialog(this);
         SheetAnnotationBinding s = SheetAnnotationBinding.inflate(getLayoutInflater());
-        s.textType.setText(getString(labelOf(a.type)) + " · "
-                + getString(R.string.annotation_page, a.pageIndex + 1));
+        s.textType.setText(getString(R.string.annotation_type_page, getString(labelOf(a.type)),
+                a.pageIndex + 1));
         s.textTitle.setText(isEmpty(a.title) ? getString(R.string.annotation_no_title) : a.title);
         s.textDetail.setText(a.detail);
         s.textDetail.setVisibility(isEmpty(a.detail) ? View.GONE : View.VISIBLE);
@@ -377,8 +398,10 @@ public class TopicActivity extends BaseActivity implements PdfBridge.Listener {
     /** Chuyển sang tab Ghi chú, cuộn tới đúng trang và vị trí, nháy sáng vùng đánh dấu 2 lần. */
     private void jumpTo(AnnotationEntity a) {
         selectTab(0);
-        b.web.postDelayed(() ->
-                b.web.evaluateJavascript("reno.scrollTo(" + a.id + ")", null), 150);
+        if (webGone) return;
+        b.web.postDelayed(() -> {
+            if (!webGone) b.web.evaluateJavascript("reno.scrollTo(" + a.id + ")", null);
+        }, 150);
     }
 
     // ------------------------------------------------------------ Thống kê

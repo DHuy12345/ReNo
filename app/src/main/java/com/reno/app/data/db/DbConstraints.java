@@ -36,7 +36,7 @@ public final class DbConstraints {
     }
 
     static String triggerSql(String table, String name, String violation, String event) {
-        String trigger = "chk_" + table + "_" + name + "_" + event.toLowerCase();
+        String trigger = "chk_" + table + "_" + name + "_" + event.toLowerCase(java.util.Locale.ROOT);
         return "CREATE TRIGGER IF NOT EXISTS " + trigger
                 + " BEFORE " + event + " ON " + table
                 + " WHEN " + violation

@@ -197,7 +197,7 @@ public class CameraFragment extends Fragment {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
             menu.add(Menu.NONE, MENU_TRANSLATE, 0, R.string.camera_translate)
-                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);   // các nút đánh dấu / Dịch phải luôn hiện
             return true;
         }
 

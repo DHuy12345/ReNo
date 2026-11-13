@@ -6,7 +6,6 @@
     <string name="time_days_ago">%1$d ngày trước</string>
 
     <!-- Chung -->
-    <string name="ok">OK</string>
     <string name="cancel">Hủy</string>
     <string name="save">Lưu</string>
     <string name="delete">Xóa</string>
@@ -113,7 +112,6 @@
     <string name="read_add_topic">Thêm topic</string>
     <string name="read_need_folder">Hãy tạo thư mục trước khi thêm topic</string>
     <string name="read_choose_folder">Chọn thư mục</string>
-    <string name="read_copying">Đang chép file PDF…</string>
     <string name="read_pdf_error">Không mở được file PDF này</string>
     <string name="read_topic_name">Tên topic</string>
     <string name="read_topic_name_hint">Tên topic</string>
@@ -345,4 +343,6 @@
     <string name="notif_unread">Chưa đọc</string>
     <string name="channel_reminder_name">Nhắc nhở ReNo</string>
     <string name="channel_reminder_description">Nhắc ghi chú đến giờ và nhắc ôn tập từ vựng</string>
+    <string name="topic_reader_crashed">Trình đọc PDF đã dừng do thiếu bộ nhớ, hãy mở lại topic</string>
+    <string name="annotation_type_page">%1$s · Trang %2$d</string>
 </resources>

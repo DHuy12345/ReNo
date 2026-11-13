@@ -83,6 +83,7 @@ public class SkipDialogActivity extends AppCompatActivity {
         setContentView(b.getRoot());
         setFinishOnTouchOutside(true);
         state = new ViewModelProvider(this).get(State.class);
+        if (savedInstanceState == null) b.editDays.setText(String.valueOf(1));   // mặc định lùi 1 ngày
 
         b.btnCancel.setOnClickListener(v -> finish());
         b.btnConfirm.setOnClickListener(v -> confirm());

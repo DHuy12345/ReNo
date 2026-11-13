@@ -70,7 +70,7 @@ public class SelectableWebView extends WebView {
             if (!markEnabled) return;
             for (int i = 0; i < LABELS.length; i++) {
                 menu.add(Menu.NONE, i, i, LABELS[i])
-                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);   // các nút đánh dấu / Dịch phải luôn hiện
             }
         }
 

@@ -1,5 +1,6 @@
 package com.reno.app.ui.calendar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -76,6 +77,7 @@ public class TimetableView extends View {
     private final Paint vocabPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint nowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint bgPaint = new Paint();
+    private final Paint labelBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final TextPaint timeText = new TextPaint(Paint.ANTI_ALIAS_FLAG);
     private final TextPaint headerText = new TextPaint(Paint.ANTI_ALIAS_FLAG);
     private final TextPaint blockText = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -129,6 +131,7 @@ public class TimetableView extends View {
         vocabText.setColor(moss);
         vocabText.setTextSize(11 * sp);
         vocabText.setFakeBoldText(true);
+        labelBgPaint.setColor(ContextCompat.getColor(context, R.color.moss_light));
 
         weekdayLabels = new String[]{context.getString(R.string.weekday_mon),
                 context.getString(R.string.weekday_tue), context.getString(R.string.weekday_wed),
@@ -162,6 +165,7 @@ public class TimetableView extends View {
 
             @Override
             public boolean onSingleTapUp(@NonNull MotionEvent e) {
+                performClick();
                 handleTap(e.getX(), e.getY());
                 return true;
             }
@@ -296,6 +300,7 @@ public class TimetableView extends View {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")   // performClick() được gọi trong onSingleTapUp
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // Không để bảng kéo hay ViewPager phía ngoài giành thao tác cuộn.
@@ -303,6 +308,11 @@ public class TimetableView extends View {
             getParent().requestDisallowInterceptTouchEvent(true);
         }
         return gestures.onTouchEvent(event) || super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean performClick() {
+        return super.performClick();   // để dịch vụ trợ năng nhận được thao tác chạm
     }
 
     private void handleTap(float x, float y) {
@@ -357,7 +367,12 @@ public class TimetableView extends View {
             canvas.drawLine(day * cw + 2 * density, y, (day + 1) * cw - 2 * density, y,
                     vocabPaint);
             String label = getContext().getString(R.string.calendar_vocab_line, mark.count);
-            canvas.drawText(label, day * cw + 4 * density, y - 3 * density, vocabText);
+            float textWidth = vocabText.measureText(label);
+            float right = (day + 1) * cw - 4 * density;
+            tmp.set(right - textWidth - 8 * density, y - vocabText.getTextSize() - 6 * density,
+                    right, y - 1 * density);
+            canvas.drawRoundRect(tmp, 4 * density, 4 * density, labelBgPaint);
+            canvas.drawText(label, right - textWidth - 4 * density, y - 4 * density, vocabText);
         }
         // Vạch đỏ mảnh đánh dấu giờ hiện tại.
         LocalDate today = DateUtils.today();

@@ -12,6 +12,6 @@ public class PreparedPdf {
     public String suggestedName() {
         if (originalName == null) return "";
         String n = originalName.trim();
-        return n.toLowerCase().endsWith(".pdf") ? n.substring(0, n.length() - 4) : n;
+        return n.toLowerCase(java.util.Locale.ROOT).endsWith(".pdf") ? n.substring(0, n.length() - 4) : n;
     }
 }

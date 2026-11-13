@@ -13,14 +13,15 @@
         android:orientation="vertical"
         android:padding="@dimen/space_3">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_logo"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/logo_height"
             android:layout_marginTop="@dimen/space_4"
             android:adjustViewBounds="true"
             android:contentDescription="@string/logo_description"
-            android:src="@drawable/logo_reno" />
+            android:src="@drawable/logo_reno"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Reno.Card" />
 
         <TextView
             android:layout_width="wrap_content"

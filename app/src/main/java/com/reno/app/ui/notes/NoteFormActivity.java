@@ -31,6 +31,7 @@ import java.util.List;
 public class NoteFormActivity extends BaseActivity {
     private static final String EXTRA_NOTE_ID = "note_id";
     private static final String EXTRA_DATE = "date";
+    private static final int DEFAULT_DURATION = 30;
     private static final int DURATION_MIN = 5;
     private static final int DURATION_MAX = 720;
     private static final int INTERVAL_MIN = 2;
@@ -100,7 +101,7 @@ public class NoteFormActivity extends BaseActivity {
         vm.time = LocalTime.now().withSecond(0).withNano(0);   // thời điểm hiện tại
         vm.color = NoteRepository.NOTE_COLORS[0];
         vm.initialized = true;
-        b.editDuration.setText("30");
+        b.editDuration.setText(String.valueOf(DEFAULT_DURATION));   // mặc định 30 phút
         bindState();
         // Màu mặc định: ngẫu nhiên, ưu tiên màu chưa dùng.
         repo.suggestColor(userId, color -> {
@@ -194,7 +195,10 @@ public class NoteFormActivity extends BaseActivity {
         } else if (NoteEntity.REPEAT_CUSTOM.equals(vm.repeatType)) {
             radio = R.id.radio_custom;
         }
-        if (b.groupRepeat.getCheckedRadioButtonId() != radio) b.groupRepeat.check(radio);
+        if (b.groupRepeat.getCheckedRadioButtonId() != radio) {
+            b.groupRepeat.check(radio);
+            b.groupRepeat.jumpDrawablesToCurrentState();
+        }
         bindRepeatSections();
     }
 

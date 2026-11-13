@@ -42,6 +42,12 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            all {
+                // ./gradlew :app:testDebugUnitTest -PrenoScreenshots=true --tests '*ScreenshotTest'
+                // chụp ảnh các màn hình vào app/build/screenshots
+                systemProperty 'reno.screenshots', project.findProperty('renoScreenshots') ?: 'false'
+                systemProperty 'reno.screenshotDir', "${project.layout.buildDirectory.get().asFile}/screenshots"
+            }
         }
     }
 }
