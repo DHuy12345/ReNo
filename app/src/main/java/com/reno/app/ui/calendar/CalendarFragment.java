@@ -83,7 +83,21 @@ public class CalendarFragment extends Fragment {
         });
         b.btnCollapse.setOnClickListener(v -> {
             vm.collapsed = !vm.collapsed;
+            if (!vm.collapsed) vm.userExpanded = true;
             applyCollapsed();
+        });
+        // Màn hình thấp (hoặc tháng có 6 hàng tuần): lịch tháng chiếm gần hết chỗ và thời khóa
+        // biểu bị ép mất. Khi đó tự thu gọn lịch về một hàng tuần, trừ khi người dùng đã tự
+        // mở rộng lại.
+        b.timetable.addOnLayoutChangeListener((v, l, t, r, bottom, ol, ot, or, ob) -> {
+            if (vm.collapsed || vm.userExpanded || b == null) return;
+            int min = getResources().getDimensionPixelSize(R.dimen.timetable_min_height);
+            if (bottom - t < min) {
+                vm.collapsed = true;
+                v.post(() -> {
+                    if (b != null) applyCollapsed();
+                });
+            }
         });
         b.btnToday.setOnClickListener(v -> selectDate(DateUtils.today(), true));
         b.btnPrev.setOnClickListener(v -> step(-1));

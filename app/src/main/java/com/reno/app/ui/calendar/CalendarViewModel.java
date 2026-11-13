@@ -52,6 +52,8 @@ public class CalendarViewModel extends AndroidViewModel {
     private final MutableLiveData<Integer> hiddenVersion = new MutableLiveData<>(0);
     private final LiveData<Data> data;
     public boolean collapsed;
+    /** Người dùng tự bấm mở rộng lịch tháng: không tự thu gọn nữa. */
+    public boolean userExpanded;
 
     public CalendarViewModel(@NonNull Application app) {
         super(app);

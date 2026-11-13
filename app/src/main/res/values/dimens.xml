@@ -27,6 +27,8 @@
     <dimen name="note_color_bar">4dp</dimen>
     <dimen name="fab_bottom_space">88dp</dimen>
     <dimen name="calendar_day_height">44dp</dimen>
+    <!-- Thời khóa biểu thấp hơn mức này thì lịch tháng tự thu gọn về một hàng tuần -->
+    <dimen name="timetable_min_height">200dp</dimen>
     <dimen name="calendar_dot">5dp</dimen>
     <dimen name="sheet_peek_height">48dp</dimen>
     <dimen name="thumb_height">120dp</dimen>
